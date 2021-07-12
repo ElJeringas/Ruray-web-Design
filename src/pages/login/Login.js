@@ -3,8 +3,7 @@ import './Login.css'
 import Title from './components/title/title';
 import Label from './components/label/label';
 import Input from './components/input/input';
-/* import Button from '@material-ui/core/Button';
- */
+import ruray from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/images/ruray.png';
 
 const Login = () => {
     const [user, setUser] = useState('');
@@ -63,6 +62,9 @@ const Login = () => {
         </div>
         :
         <div className='login-content'>
+            <div >
+                <img src={ruray} alt="logo" width="120" height="110"></img>
+            </div>
             <Title text='¡Bienvenido!'/>
             { hasError &&
                     <label className='label-alert'>
@@ -71,10 +73,11 @@ const Login = () => {
                     </label>
             }
 
-            <Label text='Usuario' />
-            <Input
+            {/* <Label text='Usuario' /> */}
+            <Input 
                 attribute={{
                     id:'usuario',
+                    label:'Contraseña',
                     name:'usuario',
                     type: 'text',
                     placeholder: 'Ingrese su usuario'
@@ -83,10 +86,11 @@ const Login = () => {
                 handleChange={handleChange}
             
             />
-            <Label text='Contraseña '/>
+            {/* <Label text='Contraseña '/> */}
             <Input  
                 attribute={{
                     id:'contraseña',
+                    label:'Nombre de usuario',
                     name:'contraseña',
                     type: 'password',
                     placeholder: 'Ingrese su contraseña'
@@ -104,6 +108,7 @@ const Login = () => {
                 <button onClick={handleSubmit} className='submit-button' >
                     Ingresar
                 </button >
+         {/*        <TextField label="Nombre de usuario" margin="normal"/> */}
             </div>
         </div>
         } 

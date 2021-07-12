@@ -1,8 +1,8 @@
 .input-container {
-    background-color: cadetblue;
+    background-color: #334854;
 }
 
-.regular-style{
+/* .regular-style{
     width: 100%;
     height: 35px;
     border-radius: 25px;
@@ -13,15 +13,23 @@
     color: cadetblue;
     font-size: 14px;
     outline: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-
+ */
 .regular-style::placeholder{
     font-size:14px ;
-    color: gray;
+    color: #334854;
     opacity: 0.8;
 }
+.TextLabel{
+    color: beige !important;
+    background: #334854 !important;
+}
 
-.input-error{
+/* .input-error{
     border: 1px solid red;
     color: red;
     background: pink;
@@ -38,4 +46,5 @@
 .input-error::placeholder{
     color:red;
     font-size: 14px;
-}
+} */
+
