@@ -1,0 +1,8 @@
+.input-container {
+    background-color: #334854;
+    
+}
+
+.input-container::placeholder{
+    color: white;
+}

@@ -5,7 +5,8 @@ import Label from './components/label/label';
 import Input from './components/input/input';
 import ruray from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/images/ruray.png';
 
-const Login = () => {
+const Login = props => {
+    const{history}=props;
     const [user, setUser] = useState('');
     const [password, setPassword]=useState('');
     const [passwordError, setPasswordError]=useState(false);
@@ -109,6 +110,11 @@ const Login = () => {
                     Ingresar
                 </button >
          {/*        <TextField label="Nombre de usuario" margin="normal"/> */}
+            </div>
+
+            <div className='register-container'>
+                ¿No tienes una cuenta? {'\n'}
+                <button onClick={()=> history.push('C:\Users\Santiago\Desktop\Ruray\login-ruray-web\src\pages\createUser\Register.js') }>Regístrate</button>
             </div>
         </div>
         } 

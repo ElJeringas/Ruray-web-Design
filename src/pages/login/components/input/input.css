@@ -19,7 +19,7 @@
     align-items: center;
 }
  */
-.regular-style::placeholder{
+.input-container::placeholder{
     font-size:14px ;
     color: #334854;
     opacity: 0.8;
