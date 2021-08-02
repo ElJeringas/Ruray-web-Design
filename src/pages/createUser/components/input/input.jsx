@@ -51,7 +51,6 @@ const Input = ({attribute,handleChange,param}) => {
                 variant="outlined"
                 onChange={(e)=> handleChange(e.target.name, e.target.value)}
                 helperText={param ? ' debe tener min 6 caracteres.' : ' '}
-                className=''
                 error = {param}
                 InputLabelProps={{style: { color: '#fff'}, 
               }}

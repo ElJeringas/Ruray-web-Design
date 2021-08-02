@@ -38,7 +38,7 @@ const CssTextField = withStyles({
 
 const Input = ({attribute,handleChange,param}) => {
     return (
-        <div className='input-container'>
+        <div>
             <CssTextField  margin="none" variant="outlined" 
 
                 id={attribute.id} /* identificar con que input estamos trabajando */
@@ -47,7 +47,7 @@ const Input = ({attribute,handleChange,param}) => {
                 placeholder={attribute.placeholder} /* texto de ayuda en caja */
                 type={attribute.type}/* tipo de caracteres que se muestra */
                 error = {param }
-                style={{
+/*                 style={{
                     backgroundColor: "#344955"
                 }}
                 InputProps={{
@@ -57,7 +57,7 @@ const Input = ({attribute,handleChange,param}) => {
 
                     }
 
-                }}
+                }} */
                 InputLabelProps={{className:'TextLabel'}}
                 helperText={param ? 'Contraseña debe tener min 6 caracteres.' : ' '}
                 onChange={(e)=> handleChange(e.target.name, e.target.value)} /* manejador de estados a partr de un evento */

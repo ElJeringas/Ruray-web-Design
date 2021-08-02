@@ -19,7 +19,7 @@
     align-items: center;
 }
  */
-.input-container::placeholder{
+/* .input-container::placeholder{
     font-size:14px ;
     color: #334854;
     opacity: 0.8;
@@ -27,7 +27,7 @@
 .TextLabel{
     color: beige !important;
     background: #334854 !important;
-}
+} */
 
 /* .input-error{
     border: 1px solid red;

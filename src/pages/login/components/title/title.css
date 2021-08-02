@@ -2,7 +2,8 @@
     color: rgb(253, 253, 253);
     font-size: 20px;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
+    float: left;
     text-align: center;
     font-weight: bold;
     padding: 10px;

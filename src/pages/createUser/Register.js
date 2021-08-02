@@ -5,9 +5,7 @@ import Input from './components/input/input';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-import background from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/images/background.png'
 
-import cons from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/images/cons.jfif';
 
 import './register.css';
  
@@ -49,12 +47,6 @@ const Register = () => {
         if (name === 'confPass'){
             setConfPass(value)
         }
-
-        console.log('usuario: ',user)
-        console.log('nombre ',uName)
-        console.log('apellido: ',lastName)
-        console.log('contraseña: ',password)
-        /* console.log('conf: ',confPass) */
 
     }
     function ifMatch (param){

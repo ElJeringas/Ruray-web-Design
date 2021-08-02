@@ -36,8 +36,9 @@ const Login = (props) => {
         }
     }
     function ifMatch(param){
+        console.log(param)
         if(param.user.length > 0 && param.password.length > 0){
-            if(param.user === 'Santiago' &&param.password==='123456'){
+            if(param.user === 'Santiago' && param.password==='123456'){
                 const{user,password} = param;
                 let ac = {user, password};
                 let account = JSON.stringify(ac);
@@ -64,11 +65,12 @@ const Login = (props) => {
         root: {
           background: 'linear-gradient(45deg, #f9aa33 30%, #FF8E53 90%)',
           borderRadius: 3,
+          float:'left',
           border: 0,
           color: 'white',
           height: 48,
           width:'100px',
-          alignItems:'center',
+          /*alignItems:'center',*/   
           /* margin:'10px', */
           marginTop: '10px',
           padding: '0 20px',
@@ -81,11 +83,7 @@ const Login = (props) => {
 
     return(
         <div>
-        
-{/*         <div className='header'>
-
-        </div> */}
-
+    
         <div className='login-container'>
 
     {   isLogin ? 
@@ -139,11 +137,12 @@ const Login = (props) => {
             <StyledButton onClick={handleSubmit}>
                 Sign In
             </StyledButton>
-
         </div>
 
         <div className='register-container'>
-            ¿No tienes una cuenta? {'\n'}
+            ¿No tienes una cuenta?
+        </div>
+        <div className='register-button-container'>
             <Button color="secondary" onClick={()=> registro() }>Regístrate</Button>
         </div>
     </div>

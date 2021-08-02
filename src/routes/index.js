@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom'
 import Login from '../pages/login/Login';
 import Register from '../pages/createUser/register';
+import Home from '../pages/home/Home';
 
 export default ()=> ( 
     //add the url of login/register, feed, product, profile,etc
