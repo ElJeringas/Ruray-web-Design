@@ -76,11 +76,12 @@ const Register = () => {
         root: {
           background: 'linear-gradient(45deg, #f9aa33 30%, #FF8E53 90%)',
           borderRadius: 3,
+          float:'left',
           border: 0,
           color: 'white',
           height: 48,
           width:'100px',
-          alignItems:'center',
+          /*alignItems:'center',*/   
           /* margin:'10px', */
           marginTop: '10px',
           padding: '0 20px',
@@ -151,14 +152,18 @@ const Register = () => {
                     }}
                     handleChange={handleChange}
                 />
+                <div className='submit-button-container'>
+                    <StyledButton onClick={handleSubmit}>
+                        Sign Up
+                    </StyledButton>
+                </div>
 
-                <StyledButton onClick={handleSubmit}>
-                    Sign Up
-                </StyledButton>
 
-                <div className='register-container'>
+                <div className='log-container'>
                 ¿Ya tienes una cuenta?
-                <Button color="secondary" onClick={()=> login() }>Entrar</Button>
+                </div>
+                <div className='login-button-container'>
+                    <Button color="secondary" onClick={()=> login() }>Entrar</Button>
                 </div>
                     
             </div>

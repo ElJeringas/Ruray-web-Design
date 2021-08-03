@@ -26,8 +26,8 @@
 .login-content{
     float: left;
     padding-left: 5rem;
-    padding-top: 3px;
-    padding-bottom: 3pxS;
+    padding-top: 8px;
+    padding-bottom: 8px;
     width: 20rem;
     height: 80%;
     display: flex;
@@ -117,22 +117,26 @@
     border-radius: 1px; */
 }
 
-@media (max-width: 950px) { 
+@media (max-width: 480px) { 
     .login-content{
         display: flex;
-        width: 25rem;
-        height: 80%;
+        width: 100vw;
+        height: 100vh;
+        background-color:transparent;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         margin:auto;
         position: absolute;
     }
-    
+
     .login-container{
 
         background-image: url('c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/images/fondo.jpg');
-        background-size: 300%;
+        background-size: 100%;
+        background-position: center center;
+        background-attachment: fixed;
+        background-repeat: no-repeat; background-size: cover;
     }
 
 
