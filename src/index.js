@@ -5,7 +5,23 @@ import './index.css';
  */import reportWebVitals from './reportWebVitals';
 import Routes from './routes';
 
-const App = <Routes />
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  useQuery,
+  gql
+} from "@apollo/client";
+
+const client = new ApolloClient({
+  uri: 'http://www.rurayaws.ml/graphql',
+  cache: new InMemoryCache()
+});
+
+const App = 
+<ApolloProvider client={client}>
+<Routes />
+</ApolloProvider>
 
 ReactDOM.render(
   App,

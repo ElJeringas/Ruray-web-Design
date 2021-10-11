@@ -6,14 +6,17 @@ import ruray from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/im
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
+import { useMutation, gql } from '@apollo/client';
+import { LOGIN_MUTATION } from '../../graphql/uLogin';
 
 const Login = (props) => {
     const history=useHistory();
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState();
     const [password, setPassword]=useState('');
     const [passwordError, setPasswordError]=useState(false);
     const [isLogin, setIsLogin] = useState(false);
     const [hasError, sethasError] = useState(false);
+
 
     const registro = () =>{
         history.push('/register')
@@ -35,7 +38,7 @@ const Login = (props) => {
             }
         }
     }
-    function ifMatch(param){
+/*     function ifMatch(param){
         console.log(param)
         if(param.user.length > 0 && param.password.length > 0){
             if(param.user === 'Santiago' && param.password==='123456'){
@@ -53,13 +56,24 @@ const Login = (props) => {
             setIsLogin(false);
             sethasError(true);
         }
-    }
-    function handleSubmit (){
+    } */
+/*     function handleSubmit (){
         let account = {user,password}
         if (account){
            ifMatch (account)
         }
-    }
+    } */
+
+    const [handleSubmit] = useMutation(LOGIN_MUTATION, {
+        variables: {
+            uID: parseInt(user),
+            uPassword: password
+        },
+/*         onCompleted: ({ login }) => {
+          localStorage.setItem(token, login.token);
+          history.push('/');
+        } */
+      });
 
     const StyledButton = withStyles({
         root: {
@@ -90,6 +104,7 @@ const Login = (props) => {
     <div className='home-container'>
         <h1>Hola  {user}!</h1>
         <label>Login correcto.</label>
+        
     </div>
     :
     <div className='login-content'>
@@ -107,7 +122,7 @@ const Login = (props) => {
         <Input 
             attribute={{
                 id:'usuario',
-                label:'Contraseña',
+                label:'usuario',
                 name:'usuario',
                 type: 'text',
                 placeholder: 'Ingrese su usuario'
