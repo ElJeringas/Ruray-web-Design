@@ -69,10 +69,10 @@ const Login = (props) => {
             uID: parseInt(user),
             uPassword: password
         },
-/*         onCompleted: ({ login }) => {
-          localStorage.setItem(token, login.token);
-          history.push('/');
-        } */
+        onCompleted: ({ login }) => {
+          localStorage.setItem('token', login.token);
+          /* history.push('/'); */
+        }
       });
 
     const StyledButton = withStyles({
@@ -124,7 +124,7 @@ const Login = (props) => {
                 id:'usuario',
                 label:'usuario',
                 name:'usuario',
-                type: 'text',
+                type: 'tel',
                 placeholder: 'Ingrese su usuario'
             }}
 

@@ -10,7 +10,7 @@ const CssTextField = withStyles({
   color: '#fff',
   },
   root: {
-      /* marginTop: '1px', */
+      marginTop: 17,
     '& label.Mui-focused': {
       color: '#f9aa33',
     },
@@ -37,7 +37,7 @@ const CssTextField = withStyles({
 })(TextField);
 
 
-const Input = ({attribute,handleChange,param}) => {
+const Input = ({attribute,handleChange,param, conf}) => {
 
 
     return (
@@ -50,9 +50,9 @@ const Input = ({attribute,handleChange,param}) => {
                 placeholder={attribute.placeholder}
                 type={attribute.type}
                 variant="outlined"
-                onChange={(e)=> handleChange(e.target.name, e.target.value)}
-                helperText={param ? ' debe tener min 6 caracteres.' : ' '}
-                error = {param}
+                onChange={(e)=> handleChange(e.target.id, e.target.value)}
+                helperText={param ? ' debe tener min 8 caracteres.': ' ' ? conf ? 'deben ser iguales' : '' : ''}
+                error = {param , conf}
              />
         </div>
     )

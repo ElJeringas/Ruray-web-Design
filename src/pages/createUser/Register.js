@@ -5,7 +5,12 @@ import Input from './components/input/input';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import { pink } from '@mui/material/colors';
+import { useMutation, gql } from '@apollo/client';
+import { REGISTER_MUTATION } from '../../graphql/gqlRegister';
+import { grey } from '@material-ui/core/colors';
 
 import './register.css';
  
@@ -16,8 +21,12 @@ const Register = () => {
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
     const [passwordError, setPasswordError] = useState(false);
+    const [passwordErrorConf, setPasswordErrorConf] = useState(false);
+
+    const [mail, setMail] = useState('')
     const [confPass, setConfPass] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
+    const [terms, setTerms] = useState(false);
+
 
 
     const login = () =>{
@@ -25,10 +34,11 @@ const Register = () => {
     }
 
     function handleChange(name,value){
-        if(name === 'usuario'){
+        if(name === 'cedula'){
             setUser(value)
-        }else{
-            if(value.length < 6){
+        }
+        if(name=== 'contraseña'){
+            if(value.length < 8){
                 setPasswordError(true);
 
             }else{
@@ -45,11 +55,46 @@ const Register = () => {
         }
 
         if (name === 'confPass'){
-            setConfPass(value)
+            if(value == password){
+                setPasswordErrorConf(false);
+                setConfPass(value)
+            }else{
+                setPasswordErrorConf(true);
+            }
         }
 
+        if(name === 'email'){
+            setMail(value)
+        }
+
+
     }
-    function ifMatch (param){
+    const checkOn = () => {
+        setTerms(true);
+        console.log(terms)
+
+    };
+    console.log(terms)
+
+    const btnDisabled = user.length > 0 && uName.length > 0 && lastName.length > 0 && password.length > 0 && mail.length > 0  && confPass.length > 0 && terms === true ; // this three conditions should have filled for activate the button submmit. 
+
+
+    const [handleSubmit] = useMutation(REGISTER_MUTATION, {
+        variables: {
+            uID: parseInt(user),
+            uName:uName,
+            uLastName:lastName,
+            uPassword: password,
+            uEmail: mail,
+            uTerm: terms
+        },
+        onCompleted: ({ createUser }) => {
+          localStorage.setItem('token', createUser.token);
+          /* history.push('/'); */
+        }
+    });
+
+/*     function ifMatch (param){
         if(param.user > 0 && param < 0){
             if(param.user === 'Santiago' && param.password==='123456'){
                 const {user, password} = param;
@@ -59,14 +104,8 @@ const Register = () => {
                 setIsLogin(true);
             }
         }
-    }
+    } */
 
-    function handleSubmit(){
-        let account = {user,password}
-        if(account){
-            ifMatch(account);
-        }
-    }
 
 
     /* @@@@@@@ */
@@ -86,10 +125,19 @@ const Register = () => {
           marginTop: '10px',
           padding: '0 20px',
           boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .3)',
+
         },
         label: {
           textTransform: 'capitalize',
         },
+        disabled: {
+            color: grey[50],
+            background:grey[200]
+        },
+
+
+            
+          
     })(Button);
 
 
@@ -102,10 +150,10 @@ const Register = () => {
                 <Title text='Registro de Nuevo usuario'/>
                <Input
                 attribute={{
-                    id:'usuario',
-                    name:'usuario',
-                    type:'text',
-                    placeholder:'Ingrese su usuario'
+                    id:'cedula',
+                    name:'cedula',
+                    type:'tel',
+                    placeholder:'Ingrese su cedula'
                     }}
 
                     handleChange={handleChange}
@@ -151,9 +199,33 @@ const Register = () => {
                         placeholder:'Confirmar contraseña'
                     }}
                     handleChange={handleChange}
+                    conf={passwordErrorConf}
                 />
+                <Input
+                    attribute={{
+                        id:'email',
+                        name:'email',
+                        type:'mail',
+                        placeholder:'ingrese su correo electronico'
+                    }}
+                    handleChange={handleChange}
+                />
+                    <FormControlLabel 
+                        control={
+                                    <Checkbox         
+                                        sx={{
+                                            color: pink[800],
+                                            '&.Mui-checked': {
+                                                color: pink[600],
+                                            },
+                                        }}
+                                        onChange={(e)=>checkOn()}
+                                    />
+                                } 
+                        label="acepto terminos y condiciones"
+                    />
                 <div className='submit-button-container'>
-                    <StyledButton onClick={handleSubmit}>
+                    <StyledButton onClick={handleSubmit} disabled={!btnDisabled}>
                         Sign Up
                     </StyledButton>
                 </div>
