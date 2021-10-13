@@ -76,7 +76,7 @@ const Register = () => {
     };
     console.log(terms)
 
-    const btnDisabled = user.length > 0 && uName.length > 0 && lastName.length > 0 && password.length > 0 && mail.length > 0  && confPass.length > 0 && terms === true ; // this three conditions should have filled for activate the button submmit. 
+    const btnDisabled = user.length > 0 && uName.length > 0 && lastName.length > 0 && password.length > 7  && mail.length > 0  && confPass.length > 7 && terms === true && (password === confPass) ; // this three conditions should have filled for activate the button submmit. 
 
 
     const [handleSubmit] = useMutation(REGISTER_MUTATION, {
@@ -225,7 +225,7 @@ const Register = () => {
                         label="acepto terminos y condiciones"
                     />
                 <div className='submit-button-container'>
-                    <StyledButton onClick={handleSubmit} disabled={!btnDisabled}>
+                    <StyledButton onClick={handleSubmit} disabled={!btnDisabled /* && (confPass===password) */}>
                         Sign Up
                     </StyledButton>
                 </div>

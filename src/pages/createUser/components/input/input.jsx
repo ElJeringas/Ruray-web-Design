@@ -52,7 +52,7 @@ const Input = ({attribute,handleChange,param, conf}) => {
                 variant="outlined"
                 onChange={(e)=> handleChange(e.target.id, e.target.value)}
                 helperText={param ? ' debe tener min 8 caracteres.': ' ' ? conf ? 'deben ser iguales' : '' : ''}
-                error = {param , conf}
+                error = {param,conf}
              />
         </div>
     )
