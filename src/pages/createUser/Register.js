@@ -16,7 +16,7 @@ import './register.css';
  
 const Register = () => {
     const history=useHistory();
-    const [user, setUser] = useState(''); 
+    const [user, setUser] = useState('');
     const [uName, setUname] = useState('');
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
@@ -237,7 +237,6 @@ const Register = () => {
                 <div className='login-button-container'>
                     <Button color="secondary" onClick={()=> login() }>Entrar</Button>
                 </div>
-                    
             </div>
         </div>
     )
