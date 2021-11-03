@@ -6,7 +6,7 @@ import ruray from 'c:/Users/Santiago/Desktop/Ruray/login-ruray-web/src/assets/im
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import { useHistory } from 'react-router-dom';
-import { useMutation, gql } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { LOGIN_MUTATION } from '../../graphql/uLogin';
 
 const Login = (props) => {
@@ -70,8 +70,15 @@ const Login = (props) => {
             uPassword: password
         },
         onCompleted: ({ login }) => {
-          localStorage.setItem('token', login.token);
-          /* history.push('/'); */
+            setIsLogin(true);
+            localStorage.setItem('token', login.token);
+            console.log('LOGIN SUCCESSFULLY')
+            //history.push('/home');
+        },
+        onError:({ error }) => {
+            alert('password o contraseña incorrecta');
+            sethasError(true);
+            setIsLogin(false);
         }
       });
 
@@ -101,11 +108,7 @@ const Login = (props) => {
         <div className='login-container'>
 
     {   isLogin ? 
-    <div className='home-container'>
-        <h1>Hola  {user}!</h1>
-        <label>Login correcto.</label>
-        
-    </div>
+        history.push('/home')
     :
     <div className='login-content'>
         <div >
@@ -161,10 +164,9 @@ const Login = (props) => {
             <Button color="secondary" onClick={()=> registro() }>Regístrate</Button>
         </div>
     </div>
-    } 
+    }
 </div>
         </div>
     )
 };
-
 export default Login;

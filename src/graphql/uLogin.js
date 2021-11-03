@@ -8,6 +8,6 @@ mutation Login($uID:Int!, $uPassword:String!)
     
   ) {success
       token
-      errors{message path}} 
+      errors{message path}}
 }`
 ;

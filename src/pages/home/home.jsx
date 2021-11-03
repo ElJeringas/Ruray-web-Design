@@ -16,8 +16,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { pink } from '@material-ui/core/colors';
-import { blue, grey,lightBlue, orange } from '@mui/material/colors';
+import {grey, orange } from '@mui/material/colors';
 import Chip from '@mui/material/Chip';
 import TagFacesIcon from '@mui/icons-material/TagFaces';
 import { withStyles } from '@material-ui/core/styles';
@@ -51,6 +50,16 @@ const useStyles = makeStyles(theme =>({
         alignSelf:'center',
         alignTracks:'center',
     },
+    icons:{
+        style:{
+            color: 'white',
+        },
+        '&:hover': {
+            transition: "0.2s",
+            color: 'white',
+        },
+
+    }
 
 }));
 
@@ -194,10 +203,13 @@ export const Home = () => {
                 <Toolbar variant="dense" className={classes.tags}>
                 {chipData.map((data) => {
                     let icon;
-
-                    if (data.label === 'React') {
-                        icon = <TagFacesIcon />;
+                    
+                    for(let i=0;i<=data.key;i++){
+                        icon = <TagFacesIcon style={{ color: 'white'}} className={classes.icons}/>;
                     }
+{/*                     if (data.label === 'React') {
+                        icon = <TagFacesIcon />;
+                    } */}
 
                     return (
                         <ListItem key={data.key}>
@@ -206,7 +218,7 @@ export const Home = () => {
                                 icon={icon}
                                 size="small"
                                 label={data.label}
-                                onDelete={data.label === 'React' ? undefined : handleDelete(data)}
+                                onDelete={handleDelete(data)}
                                 onClick={handleClick}
 
                             />
